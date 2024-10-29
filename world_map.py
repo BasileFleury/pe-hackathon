@@ -24,7 +24,7 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 
 # %%
-df = pd.read_excel('DataForTable2.1WHR2023.xls')
+df = pd.read_excel('DataForTable2.1WHR2023.xlsx')
 
 # %%
 df
@@ -33,7 +33,12 @@ df
 world = gpd.read_file('map data/ne_110m_admin_0_countries.shp')
 
 # %%
-world
+pd.set_option('display.max_rows', 10)
+
+# %%
+print(world)
+
+# %%
 
 # %%
 merged = world.set_index('SOVEREIGNT').join(df.set_index('Country name'))
