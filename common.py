@@ -16,4 +16,7 @@ def normalize(df):
 
 
 
+
+
+
 #df = load_data()
