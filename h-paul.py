@@ -21,7 +21,7 @@ import common
 df = common.load_data()
 
 # %%
-df.head(5)
+#df.head(5)
 
 # %%
 #df["Life Ladder"].max()
@@ -46,11 +46,10 @@ for col in ['Life Ladder', 'Log GDP per capita',
 #df1["Life Ladder"].min()
 #df1["Life Ladder"].max()
 
-#df.head(10)
-df1.head(10)
+#df1.head(5)
 
 # %%
-df1.columns
+#df1.columns
 
 # %%
 #Création de la table de données
@@ -58,38 +57,34 @@ df2 = df1.pivot_table(values = ['Life Ladder', 'Log GDP per capita',
        'Social support', 'Healthy life expectancy at birth',
        'Freedom to make life choices', 'Generosity',
        'Perceptions of corruption', 'Affect'], index = "Country name", aggfunc = "mean")
-df2
+#df2.head(5)
 
 # %%
 df2["Joy"] = 0
 for col in df2.columns :
     df2["Joy"] += df2[col]
-df2
 
 # %%
 common.normalize_sans_zero(df2,"Joy")
 
 # %%
-df2
+df2.head(5)
 
 # %%
-
-# %%
-"""# pip install geopandas
 import geopandas as gpd
 
 df3 = df2.copy()
 world = gpd.read_file('map data/ne_110m_admin_0_countries.shp')
-merged = world.set_index('SOVEREIGNT').join(df3.set_index('Country name'))
+merged = world.set_index('SOVEREIGNT').join(df3)
 
 fig, ax = plt.subplots(1, 1, figsize=(15, 10))
 merged.boundary.plot(ax=ax, linewidth=1)
 merged.plot(column='Joy', ax=ax, legend=True,
-            legend_kwds={'label': "Bonheur",
-                         'orientation': "horizontal"},
+            legend_kwds={'label': "Joy Level",
+                         'orientation': "vertical"},
             cmap='coolwarm')
 
-plt.title('World Happiness Index by Country')
-plt.show()"""
+plt.title('Joy Index by Country')
+plt.show()
 
 # %%
