@@ -13,11 +13,11 @@ def normalize(df):
         _min,_max = df[col].min(), df[col].max()
         df[col] = (df[col] - _min)/(_max - _min)
 
-def normalize_col_sans_zero(col):
+def normalize_sans_zero(df,col):
     _min,_max = df[col].min(), df[col].max()
     df[col] = (df[col] - _min)/(_max - _min)
 
-def normalize_col_avec_zero(col):
+def normalize_avec_zero(df,col):
     _min,_max = min(df[col].min(),0), df[col].max()
     df[col] = (df[col] - _min)/(_max - _min)
 
