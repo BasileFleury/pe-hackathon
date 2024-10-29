@@ -5,4 +5,15 @@ def load_data(filename = DATA_PATH_NAME):
     df = pd.read_excel(filename)
     return df
 
+def normalize(df):
+
+    Columns = df.columns()
+    for col in Columns:
+        _min,_max = df[col].min(), df[col].max()
+        df[col] = (df[col] - _min)/(_max - _min)
+
+
+
+
+
 #df = load_data()
